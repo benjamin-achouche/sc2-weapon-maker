@@ -1,0 +1,10 @@
+.weapons-list {
+  list-style: none;
+  margin: 1rem auto;
+  padding: 0;
+  width: 90%;
+  max-width: 84rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

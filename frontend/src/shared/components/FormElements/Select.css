@@ -1,0 +1,33 @@
+.select-control {
+  margin: 1rem 0;
+}
+
+.select-control label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.select-control select {
+  width: 100%;
+  font: inherit;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  padding: 0.15rem 0.25rem;
+}
+
+.select-control select:focus {
+  outline: none;
+  background: #ebebeb;
+  border-color: #510077;
+}
+
+.select-control--invalid label,
+.select-control--invalid p {
+  color: red;
+}
+
+.select-control--invalid select {
+  border-color: red;
+  background: #ffd1d1;
+}

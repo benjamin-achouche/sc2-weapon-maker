@@ -1,0 +1,101 @@
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 1rem;
+}
+
+.nav-links a {
+  border: 1px solid transparent;
+  color: #292929;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.nav-links a:hover,
+.nav-links a:active,
+.nav-links a.active {
+  background: #f8df00;
+  border-color: #292929;
+  color: #292929;
+}
+
+.logout,
+.delete-account {
+  cursor: pointer;
+  border: 1px solid #292929;
+  color: #292929;
+  background: transparent;
+  padding: 0.5rem;
+  font: inherit;
+}
+
+.logout:focus,
+.delete-account:focus {
+  outline: none;
+}
+
+.logout:hover,
+.logout:active {
+  background: #292929;
+  color: white;
+}
+
+.delete-account {
+  border: 1px solid black;
+  color: white;
+  background: #830000;
+}
+
+.delete-account:hover,
+.delete-account:active {
+  background: #ff0000;
+}
+
+@media (min-width: 1010px) {
+  .nav-links {
+    flex-direction: row;
+  }
+
+  .nav-links li {
+    margin: 0 0.5rem;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .logout {
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+  }
+
+  .delete-account {
+    border: 1px solid black;
+    color: white;
+    background: #830000;
+  }
+
+  .delete-account:hover,
+  .delete-account:active {
+    background: #ff0000;
+    border-color: #ffffff;
+  }
+
+  .logout:hover,
+  .logout:active {
+    background: #f8df00;
+    color: #292929;
+  }
+}

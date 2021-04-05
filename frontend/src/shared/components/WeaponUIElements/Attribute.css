@@ -1,0 +1,11 @@
+.attribute {
+  display: flex;
+  flex-direction: row-reverse;
+  /*justify-content: flex-end;*/ /*to reverse attributes (image on left and buttons on right)*/
+  width: 20vw;
+  margin: 0.75rem 0;
+}
+
+.attribute__SC {
+  margin: 1.4rem 0;
+}

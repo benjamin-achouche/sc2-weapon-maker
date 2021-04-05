@@ -1,0 +1,11 @@
+.attribute-value {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 7.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.3rem;
+  filter: blur(0.4px);
+}

@@ -74,7 +74,7 @@ const UpdateWeapon = () => {
     const fetchWeapon = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/weapons/${weaponId}`
+          `${process.env.REACT_APP_BACKEND_URL}/weapons/${weaponId}`
         );
         setLoadedWeapon(responseData.weapon);
         setWeaponData(
@@ -112,7 +112,7 @@ const UpdateWeapon = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        `http://localhost:5000/api/weapons/${weaponId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/weapons/${weaponId}`,
         'PATCH',
         JSON.stringify({
           name: formState.inputs.name.value,

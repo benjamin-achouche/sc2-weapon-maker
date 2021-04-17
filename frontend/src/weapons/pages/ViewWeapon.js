@@ -49,7 +49,7 @@ const ViewWeapon = () => {
     const fetchWeapon = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/weapons/${weaponId}`
+          `${process.env.REACT_APP_BACKEND_URL}/weapons/${weaponId}`
         );
         setLoadedWeapon(responseData.weapon);
         setWeaponData(

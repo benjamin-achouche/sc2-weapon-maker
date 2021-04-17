@@ -72,7 +72,7 @@ const Auth = () => {
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(
-          'http://localhost:5000/api/users/login',
+          `${process.env.REACT_APP_BACKEND_URL}/users/login`,
           'POST',
           JSON.stringify({
             email: formState.inputs.email.value,
@@ -82,6 +82,7 @@ const Auth = () => {
             'Content-Type': 'application/json',
           }
         );
+        console.log('HELLO');
         auth.login(responseData.userId, responseData.token);
       } catch (err) {}
     } else {
@@ -93,7 +94,7 @@ const Auth = () => {
         formData.append('image', formState.inputs.image.value);
 
         const responseData = await sendRequest(
-          'http://localhost:5000/api/users/signup',
+          `${process.env.REACT_APP_BACKEND_URL}/users/signup`,
           'POST',
           formData
         );

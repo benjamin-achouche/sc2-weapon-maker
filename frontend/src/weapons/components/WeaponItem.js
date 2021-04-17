@@ -27,7 +27,7 @@ const WeaponItem = (props) => {
     setShowConfirmModal(false);
     try {
       await sendRequest(
-        `http://localhost:5000/api/weapons/${props.id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/weapons/${props.id}`,
         'DELETE',
         null,
         { Authorization: 'Bearer ' + auth.token }
@@ -35,18 +35,6 @@ const WeaponItem = (props) => {
       props.onDelete(props.id);
     } catch (err) {}
   };
-
-  // const downloadCodeFileHandler = async () => {
-  //   try {
-  //     await sendRequest(
-  //       `http://localhost:5000/api/weapons/download/${props.creatorId}`,
-  //       'GET',
-  //       null,
-  //       {},
-  //       'text'
-  //     );
-  //   } catch (err) {}
-  // };
 
   return (
     <React.Fragment>
@@ -73,7 +61,7 @@ const WeaponItem = (props) => {
         </p>
       </Modal>
       <li className="weapon-item">
-        <Card className="weapon-item__content" style={{ width: '40rem' }}>
+        <Card style={{ padding: 0, width: '40rem' }}>
           {isLoading && <LoadingSpinner asClearOverlay />}
           <div className="weapon-item__image">
             <img src={props.image} alt={props.name} />
@@ -88,7 +76,7 @@ const WeaponItem = (props) => {
             </Button>
             <Button
               inverse
-              href={`http://localhost:5000/api/weapons/download/${props.creatorId}`}
+              href={`${process.env.REACT_APP_BACKEND_URL}/weapons/download/${props.creatorId}`}
             >
               DOWNLOAD
             </Button>

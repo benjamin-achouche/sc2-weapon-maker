@@ -8,11 +8,11 @@ import './UserItem.css';
 const UserItem = (props) => {
   return (
     <li className="user-item" id={props.id}>
-      <Card className="user-item__content">
+      <Card style={{ padding: 0 }}>
         <Link to={`/${props.id}/weapons`}>
           <div className="user-item__image">
             <Avatar
-              image={`http://localhost:5000/${props.image}`}
+              image={`${process.env.REACT_APP_ASSET_URL}/${props.image}`}
               alt={props.name}
             />
           </div>

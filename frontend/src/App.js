@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 
 import {
   BrowserRouter as Router,
@@ -7,16 +7,24 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Users from './users/pages/Users';
-import NewWeapon from './weapons/pages/NewWeapon';
-import UserWeapons from './weapons/pages/UserWeapons';
-import ViewWeapon from './weapons/pages/ViewWeapon';
-import UpdateWeapon from './weapons/pages/UpdateWeapon';
-import Auth from './users/pages/Auth';
+// import Users from './users/pages/Users';
+// import NewWeapon from './weapons/pages/NewWeapon';
+// import UserWeapons from './weapons/pages/UserWeapons';
+// import ViewWeapon from './weapons/pages/ViewWeapon';
+// import UpdateWeapon from './weapons/pages/UpdateWeapon';
+// import Auth from './users/pages/Auth';
 import MainNavigation from './shared/components/Navigation/MainNavigation';
 import { AuthContext } from './shared/context/auth-context';
 import { useHttpClient } from './shared/hooks/http-hook';
 import { useAuth } from './shared/hooks/auth-hook';
+import LoadingSpinner from './shared/components/UIElements/LoadingSpinner';
+
+const Users = React.lazy(() => import('./users/pages/Users'));
+const NewWeapon = React.lazy(() => import('./weapons/pages/NewWeapon'));
+const UserWeapons = React.lazy(() => import('./weapons/pages/UserWeapons'));
+const ViewWeapon = React.lazy(() => import('./weapons/pages/ViewWeapon'));
+const UpdateWeapon = React.lazy(() => import('./weapons/pages/UpdateWeapon'));
+const Auth = React.lazy(() => import('./users/pages/Auth'));
 
 const App = () => {
   const { sendRequest } = useHttpClient();
@@ -35,9 +43,7 @@ const App = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const responseData = await sendRequest(
-          'http://localhost:5000/api/users'
-        );
+        const responseData = await sendRequest('/users');
 
         setLoadedUsers(responseData.users);
       } catch (err) {}
@@ -46,6 +52,7 @@ const App = () => {
   }, [sendRequest, setLoadedUsers]);
 
   const deleteAccountHandler = (deletedUserId) => {
+    console.log(deletedUserId);
     setLoadedUsers((prevUsers) =>
       prevUsers.filter((user) => user.id !== deletedUserId)
     );
@@ -122,7 +129,17 @@ const App = () => {
     >
       <Router>
         <MainNavigation onDelete={deleteAccountHandler} />
-        <main>{routes}</main>
+        <main>
+          <Suspense
+            fallback={
+              <div className="center">
+                <LoadingSpinner />
+              </div>
+            }
+          >
+            {routes}
+          </Suspense>
+        </main>
       </Router>
     </AuthContext.Provider>
   );

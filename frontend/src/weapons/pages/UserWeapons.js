@@ -24,7 +24,7 @@ const UserWeapons = () => {
     const fetchUser = async () => {
       try {
         const responseData = await sendRequest(
-          'http://localhost:5000/api/users'
+          `${process.env.REACT_APP_BACKEND_URL}/users`
         );
         setLoadedUser(responseData.users.find((user) => user.id === userId));
       } catch (err) {}
@@ -34,7 +34,7 @@ const UserWeapons = () => {
     const fetchUserWeapons = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5000/api/weapons/user/${userId}`
+          `${process.env.REACT_APP_BACKEND_URL}/weapons/user/${userId}`
         );
         setLoadedUserWeapons(responseData.userWeapons);
       } catch (err) {}

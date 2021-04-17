@@ -87,7 +87,7 @@ const NewWeapon = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        'http://localhost:5000/api/weapons',
+        `${process.env.REACT_APP_BACKEND_URL}/weapons`,
         'POST',
         JSON.stringify({
           character: formState.inputs.character.value,

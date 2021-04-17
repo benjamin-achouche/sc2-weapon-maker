@@ -23,6 +23,7 @@ const resetHPArrays = (attrHPObj, attrType) => {
 };
 
 const fillHPArrays = (
+  weapon,
   attrDataHPObj,
   attribute,
   SCSpeedCorrector,
@@ -40,6 +41,7 @@ const fillHPArrays = (
   for (let i = 0; i < HPAdrsVal.length; i++) {
     attribute.HP.default.push(
       calcValue(
+        weapon,
         attribute.default,
         (i * attrDataHPObj) / (HPAdrsVal.length - 1),
         1,
@@ -56,6 +58,7 @@ const fillHPArrays = (
         attribute.HP.activeSC[j].push(
           SCSpeedCorrector *
             calcValue(
+              weapon,
               attribute.activeSC[j] / selfPctHP / enemyPctHP / SCSpeedCorrector,
               (i * attrDataHPObj) / (HPAdrsVal.length - 1),
               1,
@@ -72,6 +75,7 @@ const fillHPArrays = (
     if (attribute.HP.chargingSC && attribute.chargingSC) {
       attribute.HP.chargingSC.push(
         calcValue(
+          weapon,
           attribute.chargingSC / selfPctHP / enemyPctHP,
           (i * attrDataHPObj) / (HPAdrsVal.length - 1),
           1,
@@ -87,6 +91,7 @@ const fillHPArrays = (
 };
 
 const fillDefenseHPArrays = (
+  weapon,
   attrDataHPObj,
   attribute,
   selfPctHP,
@@ -103,6 +108,7 @@ const fillDefenseHPArrays = (
     attribute.HP.default.push(
       selfPctHP ** 2 /
         calcValue(
+          weapon,
           attribute.default,
           (i * attrDataHPObj) / (HPAdrsVal.length - 1),
           1,
@@ -117,6 +123,7 @@ const fillDefenseHPArrays = (
       for (let j = 1; j <= 3; j++) {
         attribute.HP.activeSC[j].push(
           calcValue(
+            weapon,
             attribute.activeSC[j] / selfPctHP / enemyPctHP,
             -(i * attrDataHPObj) / (HPAdrsVal.length - 1),
             1,
@@ -133,6 +140,7 @@ const fillDefenseHPArrays = (
       for (let j = 1; j <= 3; j++) {
         attribute.HP.chargingSC[j].push(
           calcValue(
+            weapon,
             attribute.chargingSC[j] / selfPctHP / enemyPctHP,
             -(i * attrDataHPObj) / (HPAdrsVal.length - 1),
             1,

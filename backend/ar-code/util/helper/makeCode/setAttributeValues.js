@@ -11,9 +11,8 @@ const {
   ingameWeaponForcedSCLife,
 } = require('../../data/ingameValues');
 
-const { weapon } = require('../../data/weapon');
-
 const setDefenseAttributeValues = (
+  weapon,
   attribute,
   attrData,
   selfPctHP,
@@ -25,6 +24,7 @@ const setDefenseAttributeValues = (
       attribute.activeSC[i] =
         selfPctHP /
         calcValue(
+          weapon,
           attribute.default,
           attrData[SCActive],
           1,
@@ -38,6 +38,7 @@ const setDefenseAttributeValues = (
       attribute.chargingSC[i] =
         selfPctHP /
         calcValue(
+          weapon,
           attribute.default,
           attrData[SCActive],
           1,
@@ -52,12 +53,13 @@ const setDefenseAttributeValues = (
   }
 
   resetHPArrays(attribute.HP, 'defense');
-  fillDefenseHPArrays(attrData[lessHealth], attribute, selfPctHP, null);
+  fillDefenseHPArrays(weapon, attrData[lessHealth], attribute, selfPctHP, null);
 
   attribute.default = selfPctHP / attribute.default;
 };
 
 const setAttributeValues = (
+  weapon,
   chargingSCSpeedMultiplier,
   weaponName,
   attribute,
@@ -79,6 +81,7 @@ const setAttributeValues = (
 
   if (attrType === 'defense') {
     setDefenseAttributeValues(
+      weapon,
       attribute,
       attrData,
       selfPctHP,
@@ -135,6 +138,7 @@ const setAttributeValues = (
     }
     for (let i = 1; i <= 3; i++) {
       attribute.activeSC[i] = calcValue(
+        weapon,
         attribute.default,
         attrData[SCActive],
         SCSpeedCorrector,
@@ -153,6 +157,7 @@ const setAttributeValues = (
       forceCalculationSCLife = true;
     }
     attribute.chargingSC = calcValue(
+      weapon,
       attribute.default,
       attrData[SCCharging] * chargingSCSpeedMultiplier,
       1,
@@ -167,6 +172,7 @@ const setAttributeValues = (
   attribute.HP ? resetHPArrays(attribute.HP) : null;
   if (attrData[lessHealth]) {
     fillHPArrays(
+      weapon,
       attrData[lessHealth],
       attribute,
       SCSpeedCorrector,

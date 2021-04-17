@@ -39,7 +39,9 @@ const MainNavigation = (props) => {
     try {
       setIsDeleting(true);
       auth.setRedirection(auth.userId, auth.urlUserId);
-      const responseData = await sendRequest('http://localhost:5000/api/users');
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/users`
+      );
 
       const loadedUser = responseData.users.find(
         (user) => user.id === auth.userId
@@ -48,7 +50,7 @@ const MainNavigation = (props) => {
 
       for (const weaponId of loadedUserWeapons) {
         await sendRequest(
-          `http://localhost:5000/api/weapons/${weaponId}`,
+          `${process.env.REACT_APP_BACKEND_URL}/weapons/${weaponId}`,
           'DELETE',
           null,
           { Authorization: 'Bearer ' + auth.token }
@@ -56,7 +58,7 @@ const MainNavigation = (props) => {
       }
 
       await sendRequest(
-        `http://localhost:5000/api/users/${auth.userId}`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${auth.userId}`,
         'DELETE',
         null,
         { Authorization: 'Bearer ' + auth.token }

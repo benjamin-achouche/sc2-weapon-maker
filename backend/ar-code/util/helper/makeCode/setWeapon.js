@@ -5,6 +5,7 @@ const { selfPercentHP, enemyPercentHP } = require('../../data/ingameValues');
 
 const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.attack.value,
@@ -17,6 +18,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.defense.value,
@@ -29,6 +31,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.speed.value,
@@ -42,6 +45,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.selfGuardPiercing.value,
@@ -51,6 +55,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.enemyGuardPiercing.value,
@@ -62,6 +67,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.enemyDamageReflection.value,
@@ -70,6 +76,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     weapon.speed.value.chargingSC,
     weaponName,
     weapon.lifeContinuous.value,
@@ -83,6 +90,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.lifeHit.value,
@@ -92,6 +100,7 @@ const setWeaponAsFloat = (weapon, attrData, weaponName) => {
   );
 
   setAttributeValues(
+    weapon,
     1,
     weaponName,
     weapon.lifeVampire.value,

@@ -1,7 +1,5 @@
-const { weapon } = require('../../data/weapon');
-const { floatToHexConverter } = require('./floatToHexConverter');
-
 const calcValue = (
+  weapon,
   defaultAttr,
   otherAttr,
   SCSpeedCorrector,
